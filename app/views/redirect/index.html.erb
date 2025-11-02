@@ -11,10 +11,12 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <%= link_to "Click Here", new_link_path(short_name: @short) %> to create it
+  <% if logged_in? %>
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to "Click Here", new_link_path(short_name: @short) %> to create it
+      </div>
     </div>
-  </div>
+  <% end %>
 
 </div>

@@ -74,7 +74,45 @@ or docker:
 docker run -e DB=your_database -e DB_USER=your_user -e DB_PASS=your_pass parabuzzle/linky rake db:create; rake db:migrate
 ```
 
-# Params Passing?
+# Features
+
+## Multi-Domain Support
+
+Linky supports scoping short links to specific domains, allowing you to serve different links based on the domain being accessed. You can configure allowed domains via the Settings page (`/settings`) without touching code.
+
+- **Domain-scoped links**: Create links that only work on specific domains
+- **Global links**: Leave the domain field blank to create links that work on all domains
+- **Priority**: Domain-specific links take priority over global ones
+
+## Quick Link Creation
+
+Two convenient ways to create short links on the fly:
+
+### Auto-Generate Random Short Link
+
+Simply prepend your configured domain to any URL to instantly create a random 6-character short link:
+
+```
+go.wilkin.xyz/https://google.com
+→ Creates and redirects to: go.wilkin.xyz/a3k9d2
+```
+
+Works with any URL format:
+- Full URLs: `go.wilkin.xyz/https://github.com/user/repo`
+- Domain only: `go.wilkin.xyz/example.com`
+
+### Manual Creation Form
+
+Prefix any URL with `/s/` to open the link creation form with the URL pre-filled:
+
+```
+go.wilkin.xyz/s/https://google.com
+→ Opens form with URL already filled in
+```
+
+This lets you customize the short name, add param passing, set domain scope, or require authentication before saving.
+
+## Params Passing
 
 Params passing allows you to create fancier URL's by allowing you to specify a special redirect url when something is given after the initial short url.
 

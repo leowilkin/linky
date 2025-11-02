@@ -20,6 +20,13 @@ class LinksController < ApplicationController
   def new
     @link = Link.new
     @link.short_name = params[:short_name] if params[:short_name]
+    
+    # Handle URL from /s/ route - extract full URL from path
+    if request.path.start_with?('/s/')
+      @link.url = request.path.sub(%r{^/s/}, '')
+    elsif params[:url].present?
+      @link.url = params[:url]
+    end
   end
 
   # GET /links/1/edit
@@ -74,6 +81,6 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:short_name, :url, :params_url, :authenticated_only)
+      params.require(:link).permit(:short_name, :url, :params_url, :authenticated_only, :domain)
     end
 end

@@ -6,6 +6,7 @@
       <%= f.input :short_name, label: 'Short Url', placeholder: "google" %>
       <%= f.input :url, type: :url, label: 'Url to direct to', placeholder: "http://www.google.com" %>
       <%= f.input :params_url, type: :url, label: 'Url to use when params are passed', placeholder: "http://www.google.com/?q=" %>
+      <%= f.input :domain, as: :select, collection: Setting.allowed_domains, include_blank: 'All domains (global)', label: 'Domain' %>
       <%= f.input :authenticated_only, as: :boolean, label: 'Require authentication to access this link' %>
       <%= f.button :submit %>
       <%= link_to "Cancel", :back, class: 'btn btn-default' %>

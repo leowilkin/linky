@@ -9,16 +9,19 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/"><%=fa_icon "external-link-square"%> Linky</a>
-      <%= form_tag root_path, :method => 'get', class: "navbar-form navbar-left" do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
+      <% if logged_in? %>
+        <%= form_tag root_path, :method => 'get', class: "navbar-form navbar-left" do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
+        <% end %>
       <% end %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "#{fa_icon('plus')} Add Link".html_safe, new_link_path %></li>
         <% if logged_in? %>
+          <li><%= link_to "#{fa_icon('plus')} Add Link".html_safe, new_link_path %></li>
+          <li><%= link_to "#{fa_icon('cog')} Settings".html_safe, settings_path %></li>
           <li class="navbar-text"><%= fa_icon('user') %> <%= current_user.name || current_user.email %></li>
           <li><%= link_to "#{fa_icon('sign-out')} Logout".html_safe, logout_path, method: :delete, data: { turbo_method: :delete } %></li>
         <% end %>

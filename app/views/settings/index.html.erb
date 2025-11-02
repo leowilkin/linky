@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Settings</h1>
+
+  <% if notice %>
+    <div class="alert alert-success"><%= notice %></div>
+  <% end %>
+
+  <%= form_with url: settings_path, method: :patch, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :domains, "Allowed Domains (one per line)" %>
+      <%= f.text_area :domains, value: @domains, class: 'form-control', rows: 10, placeholder: "example.com\nshort.example.com\nlinks.example.com" %>
+      <small class="form-text text-muted">Enter one domain per line. Links can be scoped to these domains.</small>
+    </div>
+
+    <%= f.submit "Save Settings", class: 'btn btn-primary' %>
+    <%= link_to "Back to Links", links_path, class: 'btn btn-default' %>
+  <% end %>
+</div>

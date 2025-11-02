@@ -13,12 +13,17 @@ Rails.application.routes.draw do
 
   get '/search', to: 'search#index'
 
+  get '/settings', to: 'settings#index'
+  patch '/settings', to: 'settings#update'
+
   root to: 'links#index'
 
-  # Wildcard must be last - but skip reserved paths
-  # Skip /auth entirely to let OmniAuth middleware handle it
+  # Quick link creation - /s/ prefix for manual creation
+  get '/s/*url', to: 'links#new'
+
+  # Catch-all wildcard - handles both quick create and regular redirects
   match '*path', to: 'redirect#index', via: :get, constraints: lambda { |req| 
-    !req.path.start_with?('/auth', '/links', '/search', '/login', '/logout', '/rails')
+    !req.path.start_with?('/auth', '/links', '/search', '/login', '/logout', '/settings', '/rails')
   }
 
 end
