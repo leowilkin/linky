@@ -21,11 +21,8 @@ RUN bundle install --without development test
 # Copy the application
 COPY . .
 
-# Precompile assets
-RUN bundle exec rake assets:precompile RAILS_ENV=production SECRET_KEY_BASE=dummy
-
 # Expose port
 EXPOSE 3000
 
-# Start the server
-CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+# Precompile assets and start the server
+CMD ["bash", "-c", "bundle exec rake assets:precompile && bundle exec puma -C config/puma.rb"]
