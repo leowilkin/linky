@@ -48,6 +48,11 @@ group :development, :test do
   gem 'debug', platforms: :mri
   # Load environment variables from .env file
   gem 'dotenv-rails'
+  # Linting and security tools
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  gem 'brakeman', require: false
+  gem 'bundler-audit', require: false
 end
 
 group :development do
