@@ -49,7 +49,14 @@ docker-compose up -d
   * `AUTHENTIK_URL` - Your Authentik instance URL
   * `AUTHENTIK_CLIENT_ID` - OAuth client ID from Authentik
   * `AUTHENTIK_CLIENT_SECRET` - OAuth client secret from Authentik
+  * `ADMIN_EMAILS` - Comma-separated list of admin email addresses
+  * `ALLOWED_HOSTS` - Comma-separated list of allowed domains (for production)
   * `DB_PASS` - Database password (optional, defaults to 'linky')
+
+### Optional Environment Variables
+
+  * `SENTRY_DSN` - Sentry error tracking DSN (for production monitoring)
+  * `SENTRY_TRACES_SAMPLE_RATE` - Percentage of transactions to track (default: 0.1)
 
 ### Coolify Deployment
 

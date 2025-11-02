@@ -23,4 +23,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_admin
+    admin_emails = ENV.fetch('ADMIN_EMAILS', '').split(',').map(&:strip)
+    unless current_user && admin_emails.include?(current_user.email)
+      head :forbidden
+    end
+  end
+
 end

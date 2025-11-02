@@ -20,9 +20,13 @@ Rails.application.routes.draw do
 
   # Quick link creation - /s/ prefix for manual creation
   get '/s/*url', to: 'links#new'
+  
+  # Quick link creation - POST with CSRF protection
+  post '/quick_create', to: 'redirect#quick_create'
 
   # Catch-all wildcard - handles both quick create and regular redirects
-  match '*path', to: 'redirect#index', via: :get, constraints: lambda { |req| 
+  # Use format: false to prevent Rails from treating everything after last dot as format
+  match '*path', to: 'redirect#index', via: :get, format: false, constraints: lambda { |req| 
     !req.path.start_with?('/auth', '/links', '/search', '/login', '/logout', '/settings', '/rails')
   }
 

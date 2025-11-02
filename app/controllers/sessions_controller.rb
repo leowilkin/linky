@@ -20,11 +20,12 @@ class SessionsController < ApplicationController
       u.name = auth.info.name
     end
     
+    # Prevent session fixation
+    reset_session
     session[:user_id] = user.id
     
     # Redirect to original destination or root
-    return_to = session.delete(:return_to) || root_path
-    redirect_to return_to, notice: 'Successfully logged in!'
+    redirect_to root_path, notice: 'Successfully logged in!'
   end
 
   def destroy

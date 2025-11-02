@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1>Create Quick Link</h1>
+      
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p>Create a random short link for this URL?</p>
+          <p class="text-info"><strong><%= @url %></strong></p>
+          
+          <%= form_with url: quick_create_path, method: :post, local: true do |f| %>
+            <%= f.hidden_field :url, value: @url %>
+            
+            <%= f.submit "Create Short Link", class: 'btn btn-primary btn-lg' %>
+            <%= link_to "Cancel", root_path, class: 'btn btn-default btn-lg' %>
+          <% end %>
+        </div>
+      </div>
+      
+      <p class="text-muted">
+        <small>
+          Or use <%= link_to "/s/#{@url}", "/s/#{@url}" %> to customize the short name, add param passing, or set other options.
+        </small>
+      </p>
+    </div>
+  </div>
+</div>

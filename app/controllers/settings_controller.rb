@@ -1,4 +1,6 @@
 class SettingsController < ApplicationController
+  before_action :require_admin
+
   def index
     @domains = Setting.allowed_domains.join("\n")
   end

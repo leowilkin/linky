@@ -43,6 +43,13 @@ gem 'omniauth', '~> 2.1'
 gem 'omniauth-oauth2', '~> 1.8'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 
+# Rate limiting and abuse prevention
+gem 'rack-attack', '~> 6.7'
+
+# Error tracking and monitoring
+gem 'sentry-ruby'
+gem 'sentry-rails'
+
 group :development, :test do
   # Call 'debug' anywhere in the code to stop execution and get a debugger console
   gem 'debug', platforms: :mri
