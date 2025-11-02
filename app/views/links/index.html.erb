@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<%= will_paginate @posts %>
+
+<table class="table">
+  <tr>
+    <th>Short Link</th>
+    <th>Url</th>
+    <th>Visits</th>
+  </tr>
+
+  <% @links.each do |link| %>
+    <tr>
+      <td>
+        <%= link_to( "/#{link.short_name}", link_path(link.id) ) %>
+      </td>
+      <td>
+        <%= link_to( truncate(link.url), link.url, title: link.url )%>
+      </td>
+      <td>
+        <%= number_with_delimiter link.clicks %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @posts %>

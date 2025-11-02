@@ -1,0 +1,11 @@
+.git
+.env
+log/*
+tmp/*
+.bundle
+vendor/bundle
+node_modules
+*.log
+*.pid
+coverage
+.DS_Store
