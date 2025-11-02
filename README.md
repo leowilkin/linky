@@ -5,6 +5,12 @@ Linky is your friendly internal URL shortener service.
 
 This app is super simple to get up and running and makes managing intranet short links super simple!
 
+# What's different on this fork?
+
+leowilkin/linky is a fork of [parabuzzle/linky](https://github.com/parabuzzle/linky). This fork adds support for SSO (I'm using Authentik) through OmniAuth, multiple custom domain names, and private SSO-required links.
+
+Instead of an intranet app, this fork is designed to be used as a general purpose URL shortener for any organization or person!
+
 # Why Linky?
 
 While I was searching for an open source version of the kinds of intranet URL shorteners that I was used to using at companies around Silicon Valley, I found that there are a ton of URL shorteners out there but all of them are either over complicated or just a "proof of concept". Linky was built to serve as a simple, yet useful, URL shortener for use internally in company based on what I've observed as useful inside large organizations.
@@ -18,10 +24,6 @@ While I was searching for an open source version of the kinds of intranet URL sh
 ## Requirements
 
 You will need a postgres database to connect to.
-
-## Heroku
-
-Fork the code, push to Heroku.
 
 ## Docker / Coolify
 
