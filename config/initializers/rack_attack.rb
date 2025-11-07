@@ -38,13 +38,12 @@ class Rack::Attack
   end
 
   # Custom response for throttled requests
-  self.throttled_responder = lambda do |env|
-    match_data = env['rack.attack.match_data']
-    now = match_data[:epoch_time]
+  self.throttled_responder = lambda do |request|
+    match_data = request.env['rack.attack.match_data']
     
     headers = {
       'Content-Type' => 'text/html',
-      'Retry-After' => match_data[:period].to_s
+      'Retry-After' => (match_data[:period] || 60).to_s
     }
 
     [
