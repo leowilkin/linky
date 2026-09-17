@@ -21,8 +21,14 @@ RUN bundle install --without development test
 # Copy the application
 COPY . .
 
+# Precompile assets here rather than at boot, so starting a container is just
+# booting puma. SECRET_KEY_BASE_DUMMY lets the production environment load
+# without the real secret; no database is reached during precompile.
+ENV RAILS_ENV=production
+RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rake assets:precompile
+
 # Expose port
 EXPOSE 3000
 
-# Precompile assets and start the server
-CMD ["bash", "-c", "bundle exec rake assets:precompile && bundle exec puma -C config/puma.rb"]
+# Start the server
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
