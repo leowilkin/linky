@@ -12,7 +12,7 @@ gem 'rails', '~> 7.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.5'
 # Use Puma as the app server
-gem 'puma', '~> 6.4'
+gem 'puma', '~> 7.2', '>= 7.2.1'
 # Use Sprockets for assets
 gem 'sprockets-rails', '~> 3.5'
 # Use SCSS for stylesheets
